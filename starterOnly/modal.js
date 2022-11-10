@@ -28,6 +28,34 @@ const locationInput6 = document.getElementById('location6');
 const conditions = document.getElementById('checkbox1');
 const submitForm = document.getElementById('submitForm');
 
+// Err txt
+
+const firstNameErr = "Entrer 2 caractères ou plus pour le champ du prénom."
+const lastNameErr = "Entrer 2 caractères ou plus pour le champ du nom."
+const emailErr = "Entrer un email correct."
+const birthdateErr = "Entrer une date de naissance correct."
+const quantityErr = "Entrer un nombre de participation correct."
+const locationErr = "Selectionner à quel tournoi vous avez participé cette année."
+const conditionsErr = "Accepter les conditions d'utilisation"
+
+// Function show error
+
+const showErr = (e, txtErr, id) => {
+  if (!document.getElementById(id)) {
+    const createTxtErr = document.createElement("p");
+    createTxtErr.classList.add('err-txt');
+    createTxtErr.id = id
+    e.after(createTxtErr);
+    createTxtErr.innerText = txtErr;
+  }
+}
+
+// Function remove error
+
+const removeErr = (id) => {
+  document.getElementById(id) ? document.getElementById(id).remove() : null;
+}
+
 //RegExp
 
 const regExpEmail = new RegExp(
@@ -56,36 +84,40 @@ closeSubMenu.addEventListener('click', () => {
 
 submitForm.addEventListener('click', (e) => {
 
+  // Override the form's default behavior
+
+  e.preventDefault()
+
   //Check firstName
 
   if (firstNameInput.value.length > 1) {
-    e.preventDefault()
+    removeErr("txtErrFirstName")
   } else {
-    e.preventDefault()
+    showErr(firstNameInput, firstNameErr, "txtErrFirstName")
   }
 
   //Check lastName
 
   if (lastNameInput.value.length > 1) {
-    e.preventDefault()
+    removeErr("txtErrLastName")
   } else {
-    e.preventDefault()
+    showErr(lastNameInput, lastNameErr, "txtErrLastName")
   }
 
   //Check email
 
   if (regExpEmail.test(emailInput.value)) {
-    e.preventDefault()
+    removeErr("txtErrEmail")
   } else {
-    e.preventDefault()
+    showErr(emailInput, emailErr, "txtErrEmail")
   }
 
   // Check birthdate
 
   if (birthdateInput.value) {
-    e.preventDefault()
+    removeErr("txtErrBirthdate")
   } else {
-    e.preventDefault()
+    showErr(birthdateInput, birthdateErr, "txtErrBirthdate")
   }
 
 
@@ -93,25 +125,27 @@ submitForm.addEventListener('click', (e) => {
 
   const testQuantity = regExpNumber.test(quantityInput.value)
   if (testQuantity) {
-    e.preventDefault()
+    removeErr("txtErrQuantity")
+
   } else {
-    e.preventDefault()
+    showErr(quantityInput, quantityErr, "txtErrQuantity")
   }
 
   //Check location
 
   if (locationInput1.checked || locationInput2.checked || locationInput3.checked || locationInput4.checked || locationInput5.checked || locationInput6.checked) {
-    e.preventDefault()
+    removeErr("txtErrLocation")
+
   } else {
-    e.preventDefault()
+    showErr(lastLocation, locationErr, "txtErrLocation")
   }
 
   // Check conditons
 
   if (conditions.checked) {
-    e.preventDefault()
+    removeErr("txtErrConditions")
   } else {
-    e.preventDefault()
+    showErr(checkConditions, conditionsErr, "txtErrConditions")
   }
 }
 )
