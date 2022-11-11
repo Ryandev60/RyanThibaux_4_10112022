@@ -102,8 +102,6 @@ img {
   }
 }
 
-
-
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -126,8 +124,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -297,12 +293,12 @@ input[data-error]::after {
   display: none;
 }
 
-.checkbox-input:checked+.checkbox-label .checkbox-icon::after,
-.checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
 
-.checkbox-input:checked+.checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
 
@@ -471,7 +467,7 @@ input[data-error]::after {
   top: 0;
 }
 
-.hero-content>* {
+.hero-content > * {
   position: relative;
   z-index: 1;
 }
@@ -481,7 +477,6 @@ input[data-error]::after {
   font-weight: normal;
   white-space: nowrap;
 }
-
 
 .hero-text {
   width: 146%;
@@ -518,7 +513,7 @@ input[data-error]::after {
   font-weight: bolder;
 }
 
-.hero-section>.btn-signup {
+.hero-section > .btn-signup {
   display: none;
 }
 
@@ -563,7 +558,7 @@ footer {
     margin-top: 40px;
   }
 
-  .hero-section>.btn-signup {
+  .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
@@ -575,10 +570,20 @@ footer {
   }
 }
 
-@media screen and (max-width:420px) {
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
 
-  .main-navbar {}
+  to {
+    opacity: 1;
+  }
+}
 
+/* Responsive 420px */
+
+@media screen and (max-width: 420px) {
   .header-img {
     width: 200px;
     margin-top: 5px;
@@ -586,7 +591,6 @@ footer {
 
   .hero-headline {
     font-size: 3rem;
-
   }
 
   .hero-content {
@@ -604,17 +608,6 @@ footer {
   }
 }
 
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 /* Error messages */
 
 .err-txt {
@@ -623,12 +616,14 @@ footer {
   padding-bottom: 0;
 }
 
-/* Thanks messages */
+/* Form content */
 
-.thx-txt {
-  position: absolute;
-  font-size: 1.5rem;
-  text-align: center;
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 781.8px;
 }
 
 /* Close button */
@@ -644,10 +639,10 @@ footer {
   cursor: pointer;
 }
 
-.content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 781.8px;
+/* Thanks messages */
+
+.thx-txt {
+  position: absolute;
+  font-size: 1.5rem;
+  text-align: center;
 }
