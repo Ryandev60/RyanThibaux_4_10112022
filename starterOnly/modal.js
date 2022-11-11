@@ -8,23 +8,30 @@ function editNav() {
 }
 
 // DOM Elements
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-// 
+
+// DOM form content
+
 const closeSubMenu = document.getElementById('closeSubMenu');
+
 // DOM form elements
+const formContent = document.getElementById('formContent');
+const formBody = document.getElementById('formBody');
+const form = document.querySelector('form');
 const firstNameInput = document.getElementById('first');
 const lastNameInput = document.getElementById('last');
 const emailInput = document.getElementById('email');
 const birthdateInput = document.getElementById('birthdate');
 const quantityInput = document.getElementById('quantity');
-const locationInput1 = document.getElementById('location1');
-const locationInput2 = document.getElementById('location2');
-const locationInput3 = document.getElementById('location3');
-const locationInput4 = document.getElementById('location4');
-const locationInput5 = document.getElementById('location5');
-const locationInput6 = document.getElementById('location6');
+const locInput1 = document.getElementById('location1');
+const locInput2 = document.getElementById('location2');
+const locInput3 = document.getElementById('location3');
+const locInput4 = document.getElementById('location4');
+const locInput5 = document.getElementById('location5');
+const locInput6 = document.getElementById('location6');
 const conditions = document.getElementById('checkbox1');
 const submitForm = document.getElementById('submitForm');
 
@@ -35,8 +42,12 @@ const lastNameErr = "Entrer 2 caractères ou plus pour le champ du nom."
 const emailErr = "Entrer un email correct."
 const birthdateErr = "Entrer une date de naissance correct."
 const quantityErr = "Entrer un nombre de participation correct."
-const locationErr = "Selectionner à quel tournoi vous avez participé cette année."
+const locErr = "Selectionner à quel tournoi vous avez participé cette année."
 const conditionsErr = "Accepter les conditions d'utilisation"
+
+// Thx txt
+
+const txtThx = "Merci pour votre inscription"
 
 // Function show error
 
@@ -63,7 +74,7 @@ const regExpEmail = new RegExp(
 )
 
 const regExpNumber = new RegExp(
-  "^[0-100]"
+  "^[0-99]"
 )
 
 // launch modal event
@@ -82,7 +93,7 @@ closeSubMenu.addEventListener('click', () => {
 
 //Test input form
 
-submitForm.addEventListener('click', (e) => {
+submitForm ? submitForm.addEventListener('click', (e) => {
 
   // Override the form's default behavior
 
@@ -123,21 +134,19 @@ submitForm.addEventListener('click', (e) => {
 
   //Check quantity
 
-  const testQuantity = regExpNumber.test(quantityInput.value)
-  if (testQuantity) {
+  if (regExpNumber.test(quantityInput.value)) {
     removeErr("txtErrQuantity")
-
   } else {
     showErr(quantityInput, quantityErr, "txtErrQuantity")
+
   }
 
   //Check location
 
-  if (locationInput1.checked || locationInput2.checked || locationInput3.checked || locationInput4.checked || locationInput5.checked || locationInput6.checked) {
-    removeErr("txtErrLocation")
-
+  if (locInput1.checked || locInput2.checked || locInput3.checked || locInput4.checked || locInput5.checked || locInput6.checked) {
+    removeErr("txtErrLoc")
   } else {
-    showErr(lastLocation, locationErr, "txtErrLocation")
+    showErr(lastLoc, locErr, "txtErrLoc")
   }
 
   // Check conditons
@@ -147,8 +156,39 @@ submitForm.addEventListener('click', (e) => {
   } else {
     showErr(checkConditions, conditionsErr, "txtErrConditions")
   }
+
+
+
+  if (document.getElementsByClassName('err-txt').length === 0) {
+
+    // Create thanks text
+    formBody.remove();
+    const createTxtThx = document.createElement('p');
+    createTxtThx.classList.add('thx-txt');
+    formContent.appendChild(createTxtThx);
+    createTxtThx.innerText = txtThx;
+
+    //Create close button
+
+    const createCloseBtn = document.createElement('btn');
+    createCloseBtn.classList.add('close-btn');
+    formContent.appendChild(createCloseBtn);
+    createCloseBtn.innerText = 'Fermer';
+
+  } else {
+    console.log("y'a une erreur");
+
+  }
+
+  console.log(
+    document.getElementsByClassName('err-txt')
+  );
+
+  console.log(
+    document.querySelectorAll('.err-txt')
+  );
 }
-)
+) : null;
 
 
 
