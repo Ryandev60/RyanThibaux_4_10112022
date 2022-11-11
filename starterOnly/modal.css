@@ -112,7 +112,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 0px;
   }
 }
 
@@ -482,6 +482,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 
+
 .hero-text {
   width: 146%;
   font-weight: normal;
@@ -574,6 +575,35 @@ footer {
   }
 }
 
+@media screen and (max-width:420px) {
+
+  .main-navbar {}
+
+  .header-img {
+    width: 200px;
+    margin-top: 5px;
+  }
+
+  .hero-headline {
+    font-size: 3rem;
+
+  }
+
+  .hero-content {
+    min-width: 0;
+  }
+
+  .hero-text {
+    margin-top: 1rem;
+  }
+
+  .content {
+    margin: 0;
+    min-height: 100vh !important;
+    border-radius: 0;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -598,6 +628,7 @@ footer {
 .thx-txt {
   position: absolute;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 /* Close button */
@@ -610,6 +641,7 @@ footer {
   margin-bottom: 1rem;
   position: absolute;
   bottom: 10px;
+  cursor: pointer;
 }
 
 .content {
@@ -617,5 +649,5 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 781.8px;
+  min-height: 781.8px;
 }

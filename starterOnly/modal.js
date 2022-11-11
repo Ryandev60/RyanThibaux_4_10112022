@@ -1,3 +1,5 @@
+//Navbar responsive
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -174,19 +176,14 @@ submitForm ? submitForm.addEventListener('click', (e) => {
     createCloseBtn.classList.add('close-btn');
     formContent.appendChild(createCloseBtn);
     createCloseBtn.innerText = 'Fermer';
+    createCloseBtn.addEventListener('click', () => {
+      modalbg.style.display = "none"
+
+    })
 
   } else {
     console.log("y'a une erreur");
-
   }
-
-  console.log(
-    document.getElementsByClassName('err-txt')
-  );
-
-  console.log(
-    document.querySelectorAll('.err-txt')
-  );
 }
 ) : null;
 
