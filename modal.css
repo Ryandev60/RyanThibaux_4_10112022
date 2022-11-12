@@ -33,8 +33,7 @@ img {
 }
 
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+  margin: 31px 30px 0 31px;
 }
 
 .header-logo {
@@ -45,42 +44,52 @@ img {
   float: right;
 }
 
+
 .topnav a {
   float: left;
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+  transition: 0.5s;
+  padding: 15px 10px 10px 10px;
 }
 
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
+
+
+  .puce-content {
+    margin-top: 60px;
+    }
+
   .topnav a {
     display: none;
+    color: red;
   }
 
   .topnav a.icon {
-    float: right;
     display: block;
+    font-size: 2rem;
+    padding: 8px;
   }
 }
 
@@ -90,9 +99,10 @@ img {
   }
 
   .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+   width: fit-content;
+   position: absolute;
+   top: 0;
+   right: 0;
   }
 
   .topnav.responsive a {
@@ -102,17 +112,39 @@ img {
   }
 }
 
+@media screen and (max-width: 560px) {
+
+  .topnav {
+    margin-bottom: 0px !important;
+  }
+  .header-img {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+.puce-content {
+  margin-top: 20px !important;
+}
+}
 
 
 @media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
+
+  .hero-text {
+    font-size: 0.8rem !important;
+    margin-top: 15px !important;
+  }
+
+  
+
+  .hero-headline {
+    font-size: 2.5rem !important;
   }
 
   .topnav a.icon {
-    float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 0px;
   }
 }
 
@@ -126,8 +158,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -297,12 +327,12 @@ input[data-error]::after {
   display: none;
 }
 
-.checkbox-input:checked+.checkbox-label .checkbox-icon::after,
-.checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
 
-.checkbox-input:checked+.checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
 
@@ -458,7 +488,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 
 .hero-content::after {
@@ -471,7 +500,7 @@ input[data-error]::after {
   top: 0;
 }
 
-.hero-content>* {
+.hero-content > * {
   position: relative;
   z-index: 1;
 }
@@ -483,8 +512,7 @@ input[data-error]::after {
 }
 
 .hero-text {
-  width: 146%;
-  font-weight: normal;
+  font-weight: 100;
   margin-top: 57px;
   padding: 0;
 }
@@ -517,7 +545,7 @@ input[data-error]::after {
   font-weight: bolder;
 }
 
-.hero-section>.btn-signup {
+.hero-section > .btn-signup {
   display: none;
 }
 
@@ -528,6 +556,7 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -553,7 +582,6 @@ footer {
   }
 
   .hero-text {
-    width: unset;
     font-size: 1.5rem;
   }
 
@@ -562,7 +590,7 @@ footer {
     margin-top: 40px;
   }
 
-  .hero-section>.btn-signup {
+  .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
@@ -585,6 +613,37 @@ footer {
   }
 }
 
+/* Responsive 420px */
+
+@media screen and (max-width: 430px) {
+  .header-img {
+    width: 200px;
+  }
+
+
+  .hero-text {
+    margin-top: 1rem;
+  }
+
+  .content {
+    margin: 0;
+    min-height: 90vh !important;
+    border-radius: 0;
+    position: absolute !important;
+    bottom: 0;
+  }
+}
+
+.topnav {
+  margin-bottom: 60px;
+}
+
+.bar-content {
+  height: 50px;
+  width: fit-content;
+  display: flex;justify-content: flex-end;
+}
+
 /* Error messages */
 
 .err-txt {
@@ -593,11 +652,14 @@ footer {
   padding-bottom: 0;
 }
 
-/* Thanks messages */
+/* Form content */
 
-.thx-txt {
-  position: absolute;
-  font-size: 1.5rem;
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 781.8px;
 }
 
 /* Close button */
@@ -610,12 +672,27 @@ footer {
   margin-bottom: 1rem;
   position: absolute;
   bottom: 10px;
+  cursor: pointer;
 }
 
-.content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 781.8px;
+/* Thanks messages */
+
+.thx-txt {
+  position: absolute;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.puce-menu {
+  padding: 8px;
+}
+
+.puce-menu:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width:1010px) {
+  .hero-headline {
+    white-space: normal;
+  }
 }
