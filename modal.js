@@ -1,4 +1,4 @@
-//Navbar responsive
+// Navbar responsive
 
 function editNav() {
   var x = document.getElementById("myTopnav");
