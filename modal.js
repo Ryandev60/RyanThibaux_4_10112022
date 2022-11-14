@@ -15,14 +15,11 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-// DOM form content
-
-const closeSubMenu = document.getElementById("closeSubMenu");
-
 // DOM form elements
 const formContent = document.getElementById("formContent");
 const formBody = document.getElementById("formBody");
 const form = document.querySelector("form");
+const closeSubMenu = document.getElementById("closeSubMenu");
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
@@ -99,7 +96,7 @@ submitForm
 
       e.preventDefault();
 
-      //Check firstName
+      // Check if the first name has at least 2 characters
 
       if (firstNameInput.value.length > 1) {
         removeErr("txtErrFirstName");
@@ -107,7 +104,7 @@ submitForm
         showErr(firstNameInput, firstNameErr, "txtErrFirstName");
       }
 
-      //Check lastName
+      // Check if the last name has at least 2 characters
 
       if (lastNameInput.value.length > 1) {
         removeErr("txtErrLastName");
@@ -115,7 +112,7 @@ submitForm
         showErr(lastNameInput, lastNameErr, "txtErrLastName");
       }
 
-      //Check email
+      //Check email format
 
       if (regExpEmail.test(emailInput.value)) {
         removeErr("txtErrEmail");
@@ -123,7 +120,7 @@ submitForm
         showErr(emailInput, emailErr, "txtErrEmail");
       }
 
-      // Check birthdate
+      // Check if the birthdate has been completed
 
       if (birthdateInput.value) {
         removeErr("txtErrBirthdate");
@@ -131,7 +128,7 @@ submitForm
         showErr(birthdateInput, birthdateErr, "txtErrBirthdate");
       }
 
-      //Check quantity
+      // Check if the quantity has been completed
 
       if (regExpNumber.test(quantityInput.value)) {
         removeErr("txtErrQuantity");
@@ -139,7 +136,7 @@ submitForm
         showErr(quantityInput, quantityErr, "txtErrQuantity");
       }
 
-      //Check location
+      //Check if a location has been selected
 
       if (
         locInput1.checked ||
@@ -154,7 +151,7 @@ submitForm
         showErr(lastLoc, locErr, "txtErrLoc");
       }
 
-      // Check conditons
+      // Check if the conditions has been checked
 
       if (conditions.checked) {
         removeErr("txtErrConditions");
@@ -162,8 +159,9 @@ submitForm
         showErr(checkConditions, conditionsErr, "txtErrConditions");
       }
 
+      // Check if the form has been completed correctly
+
       if (document.getElementsByClassName("err-txt").length === 0) {
-        // Create thanks text
         formBody.remove();
         const createTxtThx = document.createElement("p");
         createTxtThx.classList.add("thx-txt");
@@ -179,8 +177,6 @@ submitForm
         createCloseBtn.addEventListener("click", () => {
           modalbg.style.display = "none";
         });
-      } else {
-        console.log("y'a une erreur");
       }
     })
   : null;
