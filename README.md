@@ -1,4 +1,4 @@
-# Projet GameOn repris à Jason, tâche effectué par THIBAUX Ryan :
+# Projet GameOn repris à Jason, tâches effectué par THIBAUX Ryan :
 
 1. Fermer la modale.
 2. Implémenter entrées du formulaire .
