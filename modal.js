@@ -9,6 +9,11 @@ function editNav() {
   }
 }
 
+// DOM Elements created
+const createTxtThx = document.createElement("p");
+const createCloseBtn = document.createElement("btn");
+
+
 // DOM Elements
 
 const modalbg = document.querySelector(".bground");
@@ -51,7 +56,8 @@ const txtThx = "Merci pour votre inscription";
 //RegExp
 
 const regExpEmail = new RegExp(
-  "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$"
+"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,5})+[.]{1}[a-z]{2,10}$"
+
 );
 
 const regExpNumber = new RegExp("^[0-99]");
@@ -68,13 +74,21 @@ function launchModal() {
 
 closeSubMenu.addEventListener("click", () => {
   modalbg.style.display = "none";
+ if(document.getElementsByClassName("thx-txt").length === 1)  {
+  createCloseBtn.remove();
+  createTxtThx.remove();
+  formBody.style.display = "block";
+  document.querySelectorAll("div.formData > input").forEach((input) => {
+    input.value = ""
+  });
+ } 
 });
 
 // Function show error
 
 const showErr = (e, txtErr, id) => {
   if (!document.getElementById(id)) {
-    const createTxtErr = document.createElement("p");
+  const createTxtErr = document.createElement("p");
     createTxtErr.classList.add("err-txt");
     createTxtErr.id = id;
     e.after(createTxtErr);
@@ -162,20 +176,24 @@ submitForm
       // Check if the form has been completed correctly
 
       if (document.getElementsByClassName("err-txt").length === 0) {
-        formBody.remove();
-        const createTxtThx = document.createElement("p");
+        formBody.style.display = "none";
         createTxtThx.classList.add("thx-txt");
         formContent.appendChild(createTxtThx);
         createTxtThx.innerText = txtThx;
 
         //Create close button
 
-        const createCloseBtn = document.createElement("btn");
         createCloseBtn.classList.add("close-btn");
         formContent.appendChild(createCloseBtn);
         createCloseBtn.innerText = "Fermer";
         createCloseBtn.addEventListener("click", () => {
           modalbg.style.display = "none";
+          createCloseBtn.remove();
+          createTxtThx.remove();
+          formBody.style.display = "block";
+          document.querySelectorAll("div.formData > input").forEach((input) => {
+            input.value = ""
+          });
         });
       }
     })
